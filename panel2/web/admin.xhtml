@@ -28,6 +28,7 @@
                 </ul>
             </div>
             <div id="content" class="left_content">
+                <h3 style="alignment-adjust: central">Nowy użytkownik</h3>
                 <table>
                     <tr>
                         <td>Login</td><td><h:inputText id="login" value="#{Mieszkaniec.login}" required="true"/></td>
@@ -40,6 +41,15 @@
                     </tr>
                     <tr>
                         <td>Nazwisko</td><td><h:inputText id="haslo" value="#{Mieszkaniec.nazwisko}" required="true"/></td>
+                    </tr>
+                    <tr>
+                        <td>Telefon</td><td><h:inputText id="telefon" value="#{Mieszkaniec.nrtelefonu}" required="true"/></td>
+                    </tr>
+                    <tr>
+                        <td>E_mail</td><td><h:inputText id="e_mail" value="#{Mieszkaniec.email}" required="true"/></td>
+                    </tr>
+                    <tr>
+                        <td></td><td><h:commandButton action="#{mieszkaniecBean.dodaj(Mieszkaniec)}" value="Dodaj"/></td>
                     </tr>
                     
                 </table>
