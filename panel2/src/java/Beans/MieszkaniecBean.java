@@ -40,6 +40,7 @@ public class MieszkaniecBean {
        EntityManagerFactory emf = Persistence.createEntityManagerFactory("panel2PU");
        
         mieszkaniec.setUprawnienieID(1);
+        mieszkaniec.setId(0);
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         

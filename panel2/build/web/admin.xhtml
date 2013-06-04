@@ -31,6 +31,7 @@
             <div id="content" class="left_content">
                 
                 <h3 style="alignment-adjust: central">Nowy użytkownik</h3>
+                <h:form>
                 <table>
                     <tr>
                         <td>Login</td><td><h:inputText id="login" value="#{mieszkaniecBean.mieszkaniec.login}" required="true"/></td>
@@ -42,7 +43,7 @@
                         <td>Imię</td><td><h:inputText id="imie" value="#{mieszkaniecBean.mieszkaniec.imie}" required="true"/></td>
                     </tr>
                     <tr>
-                        <td>Nazwisko</td><td><h:inputText id="haslo" value="#{mieszkaniecBean.mieszkaniec.haslo}" required="true"/></td>
+                        <td>Nazwisko</td><td><h:inputText id="nazwisko" value="#{mieszkaniecBean.mieszkaniec.nazwisko}" required="true"/></td>
                     </tr>
                     <tr>
                         <td>Telefon</td><td><h:inputText id="telefon" value="#{mieszkaniecBean.mieszkaniec.nrtelefonu}" required="true"/></td>
@@ -52,7 +53,10 @@
                     </tr>
                    
                         </table> 
+                
+                
                      <h:commandButton id="dodaj" action="#{mieszkaniecBean.dodaj}" value="Dodaj"></h:commandButton>
+                </h:form>
                                                                                  
                                        
                     
