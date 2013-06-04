@@ -38,11 +38,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Mieszkaniec.findByNrtelefonu", query = "SELECT m FROM Mieszkaniec m WHERE m.nrtelefonu = :nrtelefonu")})
 public class Mieszkaniec implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
+    
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID")
-    private Integer id;
+    @Id private Integer id;
     @Basic(optional = false)
     @Size(min = 1, max = 20)
     @Column(name = "Imie")

@@ -35,4 +35,9 @@
         <managed-bean-class>Beans.MieszkaniecBean</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>budynekBeans</managed-bean-name>
+        <managed-bean-class>Beans.BudynekBeans</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>
