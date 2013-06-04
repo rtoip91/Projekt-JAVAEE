@@ -36,22 +36,17 @@ public class MieszkaniecBean {
     
      private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("Jeju");
      
-    public String dodaj (Mieszkaniec a)
+    public void dodaj (Mieszkaniec a)
     {
         this.mieszkaniec=a;
         mieszkaniec.setUprawnienieID(1);
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        try
-        {
+        
          em.persist(mieszkaniec);
          em.getTransaction().commit();
-         return null;
-        }
-        catch (Exception e)
-           {
-                    return "Nie powiodło się";
-            }
+         
+        
     }
     /**
      * Creates a new instance of MieszkaniecBean

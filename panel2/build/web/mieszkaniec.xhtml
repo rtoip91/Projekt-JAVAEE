@@ -15,11 +15,14 @@
 
 
         <div id="top" class="top">
-            <ui:insert name="top"><h2>Panel Mieszkańca</h2></ui:insert>
+            <ui:insert name="top">Panel Mieszkańca</ui:insert>
         </div>
         <div>
             <div id="left">
-                <ui:insert name="left">Left</ui:insert>
+                <ul>
+                    <li><h:outputLink value="index.xhtml">Strona Główna</h:outputLink></li>
+                     <li><h:outputLink value="admin.xhtml">Panel Administratora</h:outputLink></li>
+                </ul>
             </div>
             <div id="content" class="left_content">
                 <ui:insert name="content">Content</ui:insert>
