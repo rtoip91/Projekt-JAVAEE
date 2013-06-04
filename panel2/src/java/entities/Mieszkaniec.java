@@ -44,7 +44,6 @@ public class Mieszkaniec implements Serializable {
     @Column(name = "ID")
     private Integer id;
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 20)
     @Column(name = "Imie")
     private String imie;
