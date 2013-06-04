@@ -15,8 +15,13 @@ import javax.persistence.Persistence;
 public class MieszkaniecBean {
 
   
-    private Mieszkaniec mieszkaniec = new Mieszkaniec();
+    private Mieszkaniec mieszkaniec;
 
+     public MieszkaniecBean() {
+         mieszkaniec = new Mieszkaniec();
+    }
+    
+    
     public Mieszkaniec getMieszkaniec() {
         return mieszkaniec;
     }
@@ -26,31 +31,25 @@ public class MieszkaniecBean {
         this.mieszkaniec = mieszkaniec;
     }
 
-    public static void setEmf(EntityManagerFactory emf) {
-        MieszkaniecBean.emf = emf;
-    }
-
-    public static EntityManagerFactory getEmf() {
-        return emf;
-    }
     
-     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("Jeju");
+    
      
-    public void dodaj (Mieszkaniec a)
+     
+    public String dodaj()
     {
-        this.mieszkaniec=a;
+       EntityManagerFactory emf = Persistence.createEntityManagerFactory("panel2PU");
+       
         mieszkaniec.setUprawnienieID(1);
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         
          em.persist(mieszkaniec);
          em.getTransaction().commit();
-         
+         return "sukces";
         
     }
     /**
      * Creates a new instance of MieszkaniecBean
      */
-    public MieszkaniecBean() {
-    }
+   
 }
