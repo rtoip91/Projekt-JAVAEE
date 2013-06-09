@@ -2,6 +2,15 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
   <persistence-unit name="panel2PU" transaction-type="JTA">
     <jta-data-source>panel</jta-data-source>
+    <class>entities.Administrator</class>
+    <class>entities.Mieszkanie</class>
+    <class>entities.Mieszkaniec</class>
+    <class>entities.Oplata</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties/>
+  </persistence-unit>
+  <persistence-unit name="PanelPU" transaction-type="JTA">
+    <jta-data-source>panel</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties/>
   </persistence-unit>

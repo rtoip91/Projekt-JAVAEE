@@ -37,29 +37,21 @@ public class MieszkaniecBean {
      
     public String dodaj()
     {
-       EntityManagerFactory emf = Persistence.createEntityManagerFactory("panel2PU");
+       EntityManagerFactory emf = Persistence.createEntityManagerFactory("PanelPU");
        
        
         mieszkaniec.setUprawnienieID(1);
-        mieszkaniec.setId(0);
-        EntityManager em = emf.createEntityManager();
-        try
-       {
-           em.getTransaction().begin();
         
+        mieszkaniec.setNazwa("looooll");
+        EntityManager em = emf.createEntityManager();
+       
+           em.getTransaction().begin();
+        mieszkaniec.setId(null);
          em.persist(mieszkaniec);
          em.getTransaction().commit();
           em.close(); 
-         return "sukces";
-       
-       }
-       
-        
-         catch (Exception e)
-       {
-          em.close(); 
-          return "porażka";
-       }
+         return null;
+      
         
     }
     /**
