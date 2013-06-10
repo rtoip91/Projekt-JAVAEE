@@ -12,7 +12,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -34,8 +36,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Oplata.findById", query = "SELECT o FROM Oplata o WHERE o.id = :id"),
     @NamedQuery(name = "Oplata.findByKwota", query = "SELECT o FROM Oplata o WHERE o.kwota = :kwota"),
     @NamedQuery(name = "Oplata.findByData", query = "SELECT o FROM Oplata o WHERE o.data = :data"),
-    @NamedQuery(name = "Oplata.findByMieszkanieID", query = "SELECT o FROM Oplata o WHERE o.mieszkanieID = :mieszkanieID"),
-    @NamedQuery(name = "Oplata.findByMieszkaniecID", query = "SELECT o FROM Oplata o WHERE o.mieszkaniecID = :mieszkaniecID"),
     @NamedQuery(name = "Oplata.findByStatus", query = "SELECT o FROM Oplata o WHERE o.status = :status"),
     @NamedQuery(name = "Oplata.findByTyp", query = "SELECT o FROM Oplata o WHERE o.typ = :typ")})
 public class Oplata implements Serializable {
@@ -60,10 +60,6 @@ public class Oplata implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "Opis")
     private String opis;
-    @Column(name = "MieszkanieID")
-    private Integer mieszkanieID;
-    @Column(name = "MieszkaniecID")
-    private Integer mieszkaniecID;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
@@ -74,6 +70,9 @@ public class Oplata implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "Typ")
     private String typ;
+    @JoinColumn(name = "MieszkanieID", referencedColumnName = "ID")
+    @ManyToOne
+    private Mieszkanie mieszkanieID;
 
     public Oplata() {
     }
@@ -123,22 +122,6 @@ public class Oplata implements Serializable {
         this.opis = opis;
     }
 
-    public Integer getMieszkanieID() {
-        return mieszkanieID;
-    }
-
-    public void setMieszkanieID(Integer mieszkanieID) {
-        this.mieszkanieID = mieszkanieID;
-    }
-
-    public Integer getMieszkaniecID() {
-        return mieszkaniecID;
-    }
-
-    public void setMieszkaniecID(Integer mieszkaniecID) {
-        this.mieszkaniecID = mieszkaniecID;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -153,6 +136,14 @@ public class Oplata implements Serializable {
 
     public void setTyp(String typ) {
         this.typ = typ;
+    }
+
+    public Mieszkanie getMieszkanieID() {
+        return mieszkanieID;
+    }
+
+    public void setMieszkanieID(Mieszkanie mieszkanieID) {
+        this.mieszkanieID = mieszkanieID;
     }
 
     @Override

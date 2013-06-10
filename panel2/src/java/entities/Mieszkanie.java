@@ -5,18 +5,23 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -31,8 +36,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Mieszkanie.findByNrPosesji", query = "SELECT m FROM Mieszkanie m WHERE m.nrPosesji = :nrPosesji"),
     @NamedQuery(name = "Mieszkanie.findByMetrarz", query = "SELECT m FROM Mieszkanie m WHERE m.metrarz = :metrarz"),
     @NamedQuery(name = "Mieszkanie.findByObciazenie", query = "SELECT m FROM Mieszkanie m WHERE m.obciazenie = :obciazenie"),
-    @NamedQuery(name = "Mieszkanie.findByMieszkaniecID", query = "SELECT m FROM Mieszkanie m WHERE m.mieszkaniecID = :mieszkaniecID"),
-    @NamedQuery(name = "Mieszkanie.findByBudynekID", query = "SELECT m FROM Mieszkanie m WHERE m.budynekID = :budynekID"),
     @NamedQuery(name = "Mieszkanie.findByNazwa", query = "SELECT m FROM Mieszkanie m WHERE m.nazwa = :nazwa"),
     @NamedQuery(name = "Mieszkanie.findByRyczaltogrzewania", query = "SELECT m FROM Mieszkanie m WHERE m.ryczaltogrzewania = :ryczaltogrzewania"),
     @NamedQuery(name = "Mieszkanie.findByZuzycieciepla", query = "SELECT m FROM Mieszkanie m WHERE m.zuzycieciepla = :zuzycieciepla")})
@@ -56,10 +59,6 @@ public class Mieszkanie implements Serializable {
     @NotNull
     @Column(name = "Obciazenie")
     private float obciazenie;
-    @Column(name = "MieszkaniecID")
-    private Integer mieszkaniecID;
-    @Column(name = "BudynekID")
-    private Integer budynekID;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -73,6 +72,14 @@ public class Mieszkanie implements Serializable {
     @NotNull
     @Column(name = "Zuzycie_ciepla")
     private float zuzycieciepla;
+    @OneToMany(mappedBy = "mieszkanieID")
+    private Collection<Oplata> oplataCollection;
+    @JoinColumn(name = "MieszkaniecID", referencedColumnName = "ID")
+    @ManyToOne
+    private Mieszkaniec mieszkaniecID;
+    @JoinColumn(name = "BudynekID", referencedColumnName = "ID")
+    @ManyToOne
+    private Budynek budynekID;
 
     public Mieszkanie() {
     }
@@ -123,22 +130,6 @@ public class Mieszkanie implements Serializable {
         this.obciazenie = obciazenie;
     }
 
-    public Integer getMieszkaniecID() {
-        return mieszkaniecID;
-    }
-
-    public void setMieszkaniecID(Integer mieszkaniecID) {
-        this.mieszkaniecID = mieszkaniecID;
-    }
-
-    public Integer getBudynekID() {
-        return budynekID;
-    }
-
-    public void setBudynekID(Integer budynekID) {
-        this.budynekID = budynekID;
-    }
-
     public String getNazwa() {
         return nazwa;
     }
@@ -161,6 +152,31 @@ public class Mieszkanie implements Serializable {
 
     public void setZuzycieciepla(float zuzycieciepla) {
         this.zuzycieciepla = zuzycieciepla;
+    }
+
+    @XmlTransient
+    public Collection<Oplata> getOplataCollection() {
+        return oplataCollection;
+    }
+
+    public void setOplataCollection(Collection<Oplata> oplataCollection) {
+        this.oplataCollection = oplataCollection;
+    }
+
+    public Mieszkaniec getMieszkaniecID() {
+        return mieszkaniecID;
+    }
+
+    public void setMieszkaniecID(Mieszkaniec mieszkaniecID) {
+        this.mieszkaniecID = mieszkaniecID;
+    }
+
+    public Budynek getBudynekID() {
+        return budynekID;
+    }
+
+    public void setBudynekID(Budynek budynekID) {
+        this.budynekID = budynekID;
     }
 
     @Override

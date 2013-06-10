@@ -5,6 +5,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,10 +14,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -38,12 +41,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Mieszkaniec.findByNrtelefonu", query = "SELECT m FROM Mieszkaniec m WHERE m.nrtelefonu = :nrtelefonu")})
 public class Mieszkaniec implements Serializable {
     private static final long serialVersionUID = 1L;
-    
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID")
-    @Id private Integer id;
+    private Integer id;
     @Basic(optional = false)
+    @NotNull
     @Size(min = 1, max = 20)
     @Column(name = "Imie")
     private String imie;
@@ -80,6 +84,10 @@ public class Mieszkaniec implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "Nr_telefonu")
     private String nrtelefonu;
+    @OneToMany(mappedBy = "mieszkaniecID")
+    private Collection<Mieszkanie> mieszkanieCollection;
+    @OneToMany(mappedBy = "mieszkaniecID")
+    private Collection<Sprawa> sprawaCollection;
 
     public Mieszkaniec() {
     }
@@ -169,6 +177,24 @@ public class Mieszkaniec implements Serializable {
 
     public void setNrtelefonu(String nrtelefonu) {
         this.nrtelefonu = nrtelefonu;
+    }
+
+    @XmlTransient
+    public Collection<Mieszkanie> getMieszkanieCollection() {
+        return mieszkanieCollection;
+    }
+
+    public void setMieszkanieCollection(Collection<Mieszkanie> mieszkanieCollection) {
+        this.mieszkanieCollection = mieszkanieCollection;
+    }
+
+    @XmlTransient
+    public Collection<Sprawa> getSprawaCollection() {
+        return sprawaCollection;
+    }
+
+    public void setSprawaCollection(Collection<Sprawa> sprawaCollection) {
+        this.sprawaCollection = sprawaCollection;
     }
 
     @Override

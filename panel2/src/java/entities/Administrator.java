@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -30,7 +32,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Administrator.findById", query = "SELECT a FROM Administrator a WHERE a.id = :id"),
     @NamedQuery(name = "Administrator.findByImie", query = "SELECT a FROM Administrator a WHERE a.imie = :imie"),
     @NamedQuery(name = "Administrator.findByNazwisko", query = "SELECT a FROM Administrator a WHERE a.nazwisko = :nazwisko"),
-    @NamedQuery(name = "Administrator.findByBudynekID", query = "SELECT a FROM Administrator a WHERE a.budynekID = :budynekID"),
     @NamedQuery(name = "Administrator.findByLogin", query = "SELECT a FROM Administrator a WHERE a.login = :login"),
     @NamedQuery(name = "Administrator.findByHaslo", query = "SELECT a FROM Administrator a WHERE a.haslo = :haslo"),
     @NamedQuery(name = "Administrator.findByNazwa", query = "SELECT a FROM Administrator a WHERE a.nazwa = :nazwa"),
@@ -52,8 +53,6 @@ public class Administrator implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "Nazwisko")
     private String nazwisko;
-    @Column(name = "BudynekID")
-    private Integer budynekID;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -71,6 +70,9 @@ public class Administrator implements Serializable {
     private String nazwa;
     @Column(name = "UprawnienieID")
     private Integer uprawnienieID;
+    @JoinColumn(name = "BudynekID", referencedColumnName = "ID")
+    @ManyToOne
+    private Budynek budynekID;
 
     public Administrator() {
     }
@@ -112,14 +114,6 @@ public class Administrator implements Serializable {
         this.nazwisko = nazwisko;
     }
 
-    public Integer getBudynekID() {
-        return budynekID;
-    }
-
-    public void setBudynekID(Integer budynekID) {
-        this.budynekID = budynekID;
-    }
-
     public String getLogin() {
         return login;
     }
@@ -150,6 +144,14 @@ public class Administrator implements Serializable {
 
     public void setUprawnienieID(Integer uprawnienieID) {
         this.uprawnienieID = uprawnienieID;
+    }
+
+    public Budynek getBudynekID() {
+        return budynekID;
+    }
+
+    public void setBudynekID(Budynek budynekID) {
+        this.budynekID = budynekID;
     }
 
     @Override
