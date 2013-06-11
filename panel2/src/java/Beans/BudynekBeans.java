@@ -3,10 +3,9 @@
  * and open the template in the editor.
  */
 package Beans;
-import entities.Mieszkanie;
+import entities.Budynek;
 
 /**
- *
  * @author Piotrek
  */
 public class BudynekBeans {
