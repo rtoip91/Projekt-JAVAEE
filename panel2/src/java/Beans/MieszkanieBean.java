@@ -19,8 +19,24 @@ import javax.persistence.Persistence;
 public class MieszkanieBean {
 
     private Mieszkanie mieszkanie; 
-    private Budynek id_budynek;
-    private Mieszkaniec id_user;
+    private int id_budynek;
+    private String login;
+
+    public int getId_budynek() {
+        return id_budynek;
+    }
+
+    public void setId_budynek(int id_budynek) {
+        this.id_budynek = id_budynek;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
 
     public Mieszkanie getMieszkanie() {
         return mieszkanie;
@@ -30,47 +46,23 @@ public class MieszkanieBean {
         this.mieszkanie = mieszkanie;
     }
 
-    public Budynek getId_budynek() {
-        return id_budynek;
-    }
-
-    public void setId_budynek(String id) {
-        EntityManagerFactory emf ;
-        EntityManager em = null ;
-        try
-        {
-         emf = Persistence.createEntityManagerFactory("panel2PU2");
-         em = emf.createEntityManager();
-        this.id_budynek=(Budynek)em.createNamedQuery("Budynek.findById").setParameter("id",id ).getSingleResult();
-        em.close();
-        }
-        catch(Exception e)
-        {
-            em.close();
-        }
-    }
-
-    public Mieszkaniec getId_user() {
-        return id_user;
-    }
-
-    public void setId_user(String login) {
-        EntityManagerFactory emf ;
-        EntityManager em = null ;
-        try
-        {
-          emf = Persistence.createEntityManagerFactory("panel2PU2");
-         em = emf.createEntityManager();
-        this.id_user =(Mieszkaniec)em.createNamedQuery("Mieszkaniec.findByLogin").setParameter("login", login).getSingleResult();
-        em.close();
-        }
-        catch (Exception e)
-                {
-                    em.close();
-                }
-    }
-
     
+private Budynek findBud()
+{
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("panel2PU2");
+        EntityManager em = emf.createEntityManager();
+        Budynek b =(Budynek) em.createNamedQuery("Budynek.findById").setParameter("id", id_budynek).getSingleResult();
+        em.close();
+        return b;
+}      
+    private Mieszkaniec findMiesz()
+{
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("panel2PU2");
+        EntityManager em = emf.createEntityManager();
+        Mieszkaniec b =(Mieszkaniec) em.createNamedQuery("Mieszkaniec.findByLogin").setParameter("login", login).getSingleResult();
+        em.close();
+        return b;
+}
     
     
     public MieszkanieBean() {
@@ -90,13 +82,15 @@ public class MieszkanieBean {
     {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("panel2PU2");
         EntityManager em = emf.createEntityManager();
-        
+        Mieszkaniec a=findMiesz();
+        Budynek b = findBud();
+        try{
          em.getTransaction().begin();
-         mieszkanie.setMieszkaniecID(id_user);
-         mieszkanie.setBudynekID(id_budynek);
-         mieszkanie.setNazwa(id_budynek.getNazwa() + mieszkanie.getNrPosesji());
+         mieszkanie.setMieszkaniecID(a);
+         mieszkanie.setBudynekID(b);
+         mieszkanie.setNazwa(b.getNazwa() + mieszkanie.getNrPosesji());
          mieszkanie.setId(null);
-         try{
+         
          em.persist(mieszkanie);
          em.getTransaction().commit();
          em.close(); 
