@@ -49,7 +49,7 @@ public class OplataBean{
     }
     
     public List<Oplata> getLista(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PanelPU");     
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("panel2PU2");     
         EntityManager em = emf.createEntityManager();
         List list = em.createNamedQuery("Oplata.findAll").getResultList();
         em.close();
@@ -76,7 +76,7 @@ public class OplataBean{
     
     public String dodaj()
     {
-       EntityManagerFactory emf = Persistence.createEntityManagerFactory("PanelPU");
+       EntityManagerFactory emf = Persistence.createEntityManagerFactory("panel2PU2");
               
        oplata.setData(toSqlDate(data));
        

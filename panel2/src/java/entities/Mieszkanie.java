@@ -5,9 +5,8 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Tomek
+ * @author Piotrek
  */
 @Entity
 @Table(name = "Mieszkanie")
@@ -45,41 +44,41 @@ public class Mieszkanie implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
-    @Column(name = "Nr_Posesji")
+    @Column(name = "Nr_Posesji", nullable = false, length = 10)
     private String nrPosesji;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Metrarz")
+    @Column(name = "Metrarz", nullable = false)
     private int metrarz;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Obciazenie")
+    @Column(name = "Obciazenie", nullable = false)
     private float obciazenie;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
-    @Column(name = "Nazwa")
+    @Column(name = "Nazwa", nullable = false, length = 30)
     private String nazwa;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Ryczalt_ogrzewania")
+    @Column(name = "Ryczalt_ogrzewania", nullable = false)
     private float ryczaltogrzewania;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Zuzycie_ciepla")
+    @Column(name = "Zuzycie_ciepla", nullable = false)
     private float zuzycieciepla;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "mieszkanieID")
-    private Collection<Oplata> oplataCollection;
+    @OneToMany(mappedBy = "mieszkanieID")
+    private List<Oplata> oplataList;
     @JoinColumn(name = "MieszkaniecID", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Mieszkaniec mieszkaniecID;
     @JoinColumn(name = "BudynekID", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Budynek budynekID;
 
     public Mieszkanie() {
@@ -156,12 +155,12 @@ public class Mieszkanie implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Oplata> getOplataCollection() {
-        return oplataCollection;
+    public List<Oplata> getOplataList() {
+        return oplataList;
     }
 
-    public void setOplataCollection(Collection<Oplata> oplataCollection) {
-        this.oplataCollection = oplataCollection;
+    public void setOplataList(List<Oplata> oplataList) {
+        this.oplataList = oplataList;
     }
 
     public Mieszkaniec getMieszkaniecID() {

@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Tomek
+ * @author Piotrek
  */
 @Entity
 @Table(name = "Ogloszenie")
@@ -36,16 +36,16 @@ public class Ogloszenie implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     private Integer id;
     @Basic(optional = false)
     @NotNull
     @Lob
     @Size(min = 1, max = 65535)
-    @Column(name = "Tresc")
+    @Column(name = "Tresc", nullable = false, length = 65535)
     private String tresc;
     @JoinColumn(name = "BudynekID", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Budynek budynekID;
 
     public Ogloszenie() {

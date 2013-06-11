@@ -5,9 +5,8 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Tomek
+ * @author Piotrek
  */
 @Entity
 @Table(name = "Budynek")
@@ -45,51 +44,51 @@ public class Budynek implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
-    @Column(name = "Miasto")
+    @Column(name = "Miasto", nullable = false, length = 30)
     private String miasto;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
-    @Column(name = "Ulica")
+    @Column(name = "Ulica", nullable = false, length = 50)
     private String ulica;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
-    @Column(name = "KodPocztowy")
+    @Column(name = "KodPocztowy", nullable = false, length = 10)
     private String kodPocztowy;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "IloscMieszkan")
+    @Column(name = "IloscMieszkan", nullable = false)
     private int iloscMieszkan;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Powierzchnia")
+    @Column(name = "Powierzchnia", nullable = false)
     private int powierzchnia;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "ObciazenieBudynku")
+    @Column(name = "ObciazenieBudynku", nullable = false)
     private float obciazenieBudynku;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
-    @Column(name = "NrDzialki")
+    @Column(name = "NrDzialki", nullable = false, length = 10)
     private String nrDzialki;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
-    @Column(name = "Nazwa")
+    @Column(name = "Nazwa", nullable = false, length = 30)
     private String nazwa;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "budynekID")
-    private Collection<Mieszkanie> mieszkanieCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "budynekID")
-    private Collection<Ogloszenie> ogloszenieCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "budynekID")
-    private Collection<Administrator> administratorCollection;
+    @OneToMany(mappedBy = "budynekID")
+    private List<Mieszkanie> mieszkanieList;
+    @OneToMany(mappedBy = "budynekID")
+    private List<Ogloszenie> ogloszenieList;
+    @OneToMany(mappedBy = "budynekID")
+    private List<Administrator> administratorList;
 
     public Budynek() {
     }
@@ -183,30 +182,30 @@ public class Budynek implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Mieszkanie> getMieszkanieCollection() {
-        return mieszkanieCollection;
+    public List<Mieszkanie> getMieszkanieList() {
+        return mieszkanieList;
     }
 
-    public void setMieszkanieCollection(Collection<Mieszkanie> mieszkanieCollection) {
-        this.mieszkanieCollection = mieszkanieCollection;
-    }
-
-    @XmlTransient
-    public Collection<Ogloszenie> getOgloszenieCollection() {
-        return ogloszenieCollection;
-    }
-
-    public void setOgloszenieCollection(Collection<Ogloszenie> ogloszenieCollection) {
-        this.ogloszenieCollection = ogloszenieCollection;
+    public void setMieszkanieList(List<Mieszkanie> mieszkanieList) {
+        this.mieszkanieList = mieszkanieList;
     }
 
     @XmlTransient
-    public Collection<Administrator> getAdministratorCollection() {
-        return administratorCollection;
+    public List<Ogloszenie> getOgloszenieList() {
+        return ogloszenieList;
     }
 
-    public void setAdministratorCollection(Collection<Administrator> administratorCollection) {
-        this.administratorCollection = administratorCollection;
+    public void setOgloszenieList(List<Ogloszenie> ogloszenieList) {
+        this.ogloszenieList = ogloszenieList;
+    }
+
+    @XmlTransient
+    public List<Administrator> getAdministratorList() {
+        return administratorList;
+    }
+
+    public void setAdministratorList(List<Administrator> administratorList) {
+        this.administratorList = administratorList;
     }
 
     @Override

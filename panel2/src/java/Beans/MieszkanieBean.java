@@ -55,7 +55,7 @@ public class MieszkanieBean {
     
     public List<Mieszkanie> getLista()
     {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PanelPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("panel2PU");
         EntityManager em = emf.createEntityManager();
         List lista = em.createNamedQuery("Mieszkanie.findAll").getResultList();
         em.close();
@@ -64,7 +64,7 @@ public class MieszkanieBean {
     }
     public String dodaj ()
     {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PanelPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("panel2PU");
         EntityManager em = emf.createEntityManager();
         
          em.getTransaction().begin();

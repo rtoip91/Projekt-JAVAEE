@@ -16,16 +16,18 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Tomek
+ * @author Piotrek
  */
 @Entity
-@Table(name = "Administrator")
+@Table(name = "Administrator", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"ID"})})
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Administrator.findAll", query = "SELECT a FROM Administrator a"),
@@ -41,39 +43,37 @@ public class Administrator implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    @Column(name = "Imie")
+    @Column(name = "Imie", nullable = false, length = 20)
     private String imie;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
-    @Column(name = "Nazwisko")
+    @Column(name = "Nazwisko", nullable = false, length = 30)
     private String nazwisko;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
-    @Column(name = "Login")
+    @Column(name = "Login", nullable = false, length = 30)
     private String login;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
-    @Column(name = "Haslo")
+    @Column(name = "Haslo", nullable = false, length = 30)
     private String haslo;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
-    @Column(name = "Nazwa")
+    @Column(name = "Nazwa", nullable = false, length = 50)
     private String nazwa;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "UprawnienieID")
-    private int uprawnienieID;
+    private Integer uprawnienieID;
     @JoinColumn(name = "BudynekID", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Budynek budynekID;
 
     public Administrator() {
@@ -83,14 +83,13 @@ public class Administrator implements Serializable {
         this.id = id;
     }
 
-    public Administrator(Integer id, String imie, String nazwisko, String login, String haslo, String nazwa, int uprawnienieID) {
+    public Administrator(Integer id, String imie, String nazwisko, String login, String haslo, String nazwa) {
         this.id = id;
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.login = login;
         this.haslo = haslo;
         this.nazwa = nazwa;
-        this.uprawnienieID = uprawnienieID;
     }
 
     public Integer getId() {
@@ -141,11 +140,11 @@ public class Administrator implements Serializable {
         this.nazwa = nazwa;
     }
 
-    public int getUprawnienieID() {
+    public Integer getUprawnienieID() {
         return uprawnienieID;
     }
 
-    public void setUprawnienieID(int uprawnienieID) {
+    public void setUprawnienieID(Integer uprawnienieID) {
         this.uprawnienieID = uprawnienieID;
     }
 

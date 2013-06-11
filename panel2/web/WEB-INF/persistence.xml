@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="panelPU" transaction-type="JTA">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <jta-data-source>javaaa222</jta-data-source>
+    <class>entities.Administrator</class>
+    <class>entities.Budynek</class>
+    <class>entities.Mieszkanie</class>
+    <class>entities.Mieszkaniec</class>
+    <class>entities.Ogloszenie</class>
+    <class>entities.Oplata</class>
+    <class>entities.Sprawa</class>
+    <class>entities.Uprawnienie</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties/>
+  </persistence-unit>
+</persistence>

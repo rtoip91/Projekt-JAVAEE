@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Tomek
+ * @author Piotrek
  */
 @Entity
 @Table(name = "Uprawnienie")
@@ -34,12 +34,12 @@ public class Uprawnienie implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "uprID")
+    @Column(name = "uprID", nullable = false)
     private Integer uprID;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
-    @Column(name = "Nazwa")
+    @Column(name = "Nazwa", nullable = false, length = 30)
     private String nazwa;
 
     public Uprawnienie() {

@@ -5,9 +5,8 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Tomek
+ * @author Piotrek
  */
 @Entity
 @Table(name = "Mieszkaniec")
@@ -45,32 +44,32 @@ public class Mieszkaniec implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    @Column(name = "Imie")
+    @Column(name = "Imie", nullable = false, length = 20)
     private String imie;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
-    @Column(name = "Nazwisko")
+    @Column(name = "Nazwisko", nullable = false, length = 30)
     private String nazwisko;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
-    @Column(name = "Login")
+    @Column(name = "Login", nullable = false, length = 30)
     private String login;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
-    @Column(name = "Haslo")
+    @Column(name = "Haslo", nullable = false, length = 30)
     private String haslo;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
-    @Column(name = "Nazwa")
+    @Column(name = "Nazwa", nullable = false, length = 50)
     private String nazwa;
     @Column(name = "UprawnienieID")
     private Integer uprawnienieID;
@@ -78,17 +77,17 @@ public class Mieszkaniec implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
-    @Column(name = "E_mail")
+    @Column(name = "E_mail", nullable = false, length = 50)
     private String email;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    @Column(name = "Nr_telefonu")
+    @Column(name = "Nr_telefonu", nullable = false, length = 20)
     private String nrtelefonu;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "mieszkaniecID")
-    private Collection<Mieszkanie> mieszkanieCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "mieszkaniecID")
-    private Collection<Sprawa> sprawaCollection;
+    @OneToMany(mappedBy = "mieszkaniecID")
+    private List<Mieszkanie> mieszkanieList;
+    @OneToMany(mappedBy = "mieszkaniecID")
+    private List<Sprawa> sprawaList;
 
     public Mieszkaniec() {
     }
@@ -181,21 +180,21 @@ public class Mieszkaniec implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Mieszkanie> getMieszkanieCollection() {
-        return mieszkanieCollection;
+    public List<Mieszkanie> getMieszkanieList() {
+        return mieszkanieList;
     }
 
-    public void setMieszkanieCollection(Collection<Mieszkanie> mieszkanieCollection) {
-        this.mieszkanieCollection = mieszkanieCollection;
+    public void setMieszkanieList(List<Mieszkanie> mieszkanieList) {
+        this.mieszkanieList = mieszkanieList;
     }
 
     @XmlTransient
-    public Collection<Sprawa> getSprawaCollection() {
-        return sprawaCollection;
+    public List<Sprawa> getSprawaList() {
+        return sprawaList;
     }
 
-    public void setSprawaCollection(Collection<Sprawa> sprawaCollection) {
-        this.sprawaCollection = sprawaCollection;
+    public void setSprawaList(List<Sprawa> sprawaList) {
+        this.sprawaList = sprawaList;
     }
 
     @Override

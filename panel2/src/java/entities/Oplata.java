@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Tomek
+ * @author Piotrek
  */
 @Entity
 @Table(name = "Oplata")
@@ -43,35 +43,35 @@ public class Oplata implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Kwota")
+    @Column(name = "Kwota", nullable = false)
     private float kwota;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "Data")
+    @Column(name = "Data", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date data;
     @Basic(optional = false)
     @NotNull
     @Lob
     @Size(min = 1, max = 65535)
-    @Column(name = "Opis")
+    @Column(name = "Opis", nullable = false, length = 65535)
     private String opis;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
-    @Column(name = "Status")
+    @Column(name = "Status", nullable = false, length = 10)
     private String status;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
-    @Column(name = "Typ")
+    @Column(name = "Typ", nullable = false, length = 30)
     private String typ;
     @JoinColumn(name = "MieszkanieID", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Mieszkanie mieszkanieID;
 
     public Oplata() {
