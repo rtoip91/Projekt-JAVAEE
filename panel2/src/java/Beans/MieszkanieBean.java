@@ -70,6 +70,7 @@ public class MieszkanieBean {
          em.getTransaction().begin();
          mieszkanie.setMieszkaniecID(id_user);
          mieszkanie.setBudynekID(id_budynek);
+         mieszkanie.setNazwa(id_budynek.getNazwa() + mieszkanie.getNrPosesji());
          mieszkanie.setId(null);
          try{
          em.persist(mieszkanie);
