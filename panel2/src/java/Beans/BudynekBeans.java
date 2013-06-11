@@ -51,6 +51,7 @@ public class BudynekBeans {
          em.getTransaction().begin();
          try
          {
+         budynek.setNazwa(budynek.toString());
          budynek.setId(null);
          em.persist(budynek);
          em.getTransaction().commit();
