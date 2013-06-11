@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link href=".././resources/css/default.css" rel="stylesheet" type="text/css" />
@@ -27,7 +29,13 @@
                 <h:form>
                 <table>
                     <tr>
-                        <td>Mieszkanie</td><td><h:inputText id="mieszkanieID" value="#{oplataBean.oplata.mieszkanieID}" required="true"/></td>
+                        <td>
+                                <h:selectOneMenu value="#{mieszkanieBean.id_mieszkanie}">
+                                    <c:forEach items="${oplataBeans.lista}" var="item">
+                                        <f:selectItem itemValue="#{item.nazwa}"/>
+                                    </c:forEach>
+                                </h:selectOneMenu>
+                        </td>
                     </tr>
                      <tr>
                          <td>Kwota</td><td><h:inputText id="kwota" value="#{oplataBean.oplata.kwota}" required="true"/></td>
@@ -42,7 +50,7 @@
                         <td>Opis opłata</td><td><h:inputText id="opis" value="#{oplataBean.oplata.opis}" required="true"/></td>
                     </tr>
                     <tr>
-                        <td>Data</td><td><h:inputText id="data" value="#{oplataBean.oplata.data}" required="true"/></td>
+                        <td>Data</td><td><h:inputText id="data" value="#{oplataBean.data}" required="true"/></td>
                     </tr>
                    
                         </table> 
