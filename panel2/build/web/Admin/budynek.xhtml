@@ -29,7 +29,36 @@
             </div>
             <div id="content" class="left_content">
                 <h:form>
-                    
+                    <h3>Nowy Budynek</h3>
+                    <table>
+                        <tr>   
+                            <td>Nazwa</td><td><h:inputText id="nazwa" value="#{budynekBeans.budynek.nazwa}"/></td>
+                        </tr>
+                        <tr>   
+                            <td>Miasto</td><td><h:inputText id="miasto" value="#{budynekBeans.budynek.miasto}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Ulica</td><td><h:inputText id="ulica" value="#{budynekBeans.budynek.ulica}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Numer posesji</td><td><h:inputText id="numer" value="#{budynekBeans.budynek.nrDzialki}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Kod</td><td><h:inputText id="kod" value="#{budynekBeans.budynek.kodPocztowy}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Ilosc mieszkań</td><td><h:inputText id="ilosc_mieszkan" value="#{budynekBeans.budynek.iloscMieszkan}"/></td>
+                        </tr>
+                        <tr>
+                            <td>powierzchnia</td><td><h:inputText id="powierzchnia" value="#{budynekBeans.budynek.powierzchnia}"/></td>
+                        </tr>
+                         <tr>
+                             <td>Obciążenie</td><td><h:inputText id="obciazenie" value="#{budynekBeans.budynek.obciazenieBudynku}"/></td>
+                        </tr>
+                        <tr>
+                            <td></td><td><h:commandButton id="button" action="#{budynekBeans.dodaj}" value="Dodaj"/></td>
+                        </tr>
+                    </table>
                 </h:form>
             </div>
         </div>
