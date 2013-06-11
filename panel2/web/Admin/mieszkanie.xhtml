@@ -2,7 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -28,7 +30,44 @@
                 </ul>
             </div>
             <div id="content" class="left_content">
-                <ui:insert name="content">Content</ui:insert>
+               <h:form>
+                    <h3>Nowy Budynek</h3>
+                    <table>
+                        <tr>   
+                            <td>Budynek</td><td><h:selectOneMenu value="#{mieszkanieBean.id_budynek}">
+                                    <c:forEach items="${budynekBeans.lista}" var="item">
+                                        <f:selectItem  itemValue="#{item}" />
+                                    </c:forEach>
+                                </h:selectOneMenu></td>
+                        </tr>
+                        <tr>   
+                            <td>Mieszkaniec</td><td><h:selectOneMenu value="#{mieszkanieBean.id_user}">
+                                    <c:forEach items="${mieszkaniecBean.lista}" var="item">
+                                        <f:selectItem  itemValue="#{item}" />
+                                    </c:forEach>
+                                </h:selectOneMenu></td>
+                        </tr>
+                        <tr>
+                            <td>Numer</td><td><h:inputText id="numer" value="#{mieszkanieBean.mieszkanie.nrPosesji}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Metrarz</td><td><h:inputText id="metrarz" value="#{mieszkanieBean.mieszkanie.metrarz}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Obciążenie</td><td><h:inputText id="obciazenie" value="#{mieszkanieBean.mieszkanie.obciazenie}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Ryczałt Ogrzewania</td><td><h:inputText id="ryczalt" value="#{mieszkanieBean.mieszkanie.ryczaltogrzewania}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Zużycie Ciepła</td><td><h:inputText id="cieplo" value="#{mieszkanieBean.mieszkanie.zuzycieciepla}"/></td>
+                        </tr>
+                         
+                        <tr>
+                            <td></td><td><h:commandButton id="button" action="#{mieszkanieBean.dodaj}" value="Dodaj"/></td>
+                        </tr>
+                    </table>
+                </h:form>
             </div>
         </div>
     </h:body>

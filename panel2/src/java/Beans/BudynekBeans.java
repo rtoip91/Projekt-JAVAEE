@@ -4,6 +4,7 @@
  */
 package Beans;
 import entities.Budynek;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -31,16 +32,34 @@ public class BudynekBeans {
        
     }
     
+    public List<Budynek> getLista()
+    {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PanelPU");
+        EntityManager em = emf.createEntityManager();
+        List lista = em.createNamedQuery("Budynek.findAll").getResultList();
+        em.close();
+        return lista;
+        
+    }
+    
     public String dodaj ()
     {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("PanelPU");
         EntityManager em = emf.createEntityManager();
         
+        
          em.getTransaction().begin();
+         try
+         {
          budynek.setId(null);
          em.persist(budynek);
          em.getTransaction().commit();
           em.close(); 
+         }
+         catch (Exception e)
+             {
+                   em.close();   
+             }
          return null;
     }
 }
