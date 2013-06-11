@@ -7,6 +7,7 @@ package entities;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Piotrek
+ * @author Tomek
  */
 @Entity
 @Table(name = "Budynek")
@@ -83,11 +84,11 @@ public class Budynek implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "Nazwa")
     private String nazwa;
-    @OneToMany(mappedBy = "budynekID")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "budynekID")
     private Collection<Mieszkanie> mieszkanieCollection;
-    @OneToMany(mappedBy = "budynekID")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "budynekID")
     private Collection<Ogloszenie> ogloszenieCollection;
-    @OneToMany(mappedBy = "budynekID")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "budynekID")
     private Collection<Administrator> administratorCollection;
 
     public Budynek() {

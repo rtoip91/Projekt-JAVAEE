@@ -7,6 +7,7 @@ package entities;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Piotrek
+ * @author Tomek
  */
 @Entity
 @Table(name = "Mieszkanie")
@@ -72,13 +73,13 @@ public class Mieszkanie implements Serializable {
     @NotNull
     @Column(name = "Zuzycie_ciepla")
     private float zuzycieciepla;
-    @OneToMany(mappedBy = "mieszkanieID")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "mieszkanieID")
     private Collection<Oplata> oplataCollection;
     @JoinColumn(name = "MieszkaniecID", referencedColumnName = "ID")
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Mieszkaniec mieszkaniecID;
     @JoinColumn(name = "BudynekID", referencedColumnName = "ID")
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Budynek budynekID;
 
     public Mieszkanie() {

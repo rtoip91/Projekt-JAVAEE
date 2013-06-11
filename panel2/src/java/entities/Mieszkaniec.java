@@ -7,6 +7,7 @@ package entities;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Piotrek
+ * @author Tomek
  */
 @Entity
 @Table(name = "Mieszkaniec")
@@ -84,9 +85,9 @@ public class Mieszkaniec implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "Nr_telefonu")
     private String nrtelefonu;
-    @OneToMany(mappedBy = "mieszkaniecID")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "mieszkaniecID")
     private Collection<Mieszkanie> mieszkanieCollection;
-    @OneToMany(mappedBy = "mieszkaniecID")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "mieszkaniecID")
     private Collection<Sprawa> sprawaCollection;
 
     public Mieszkaniec() {
