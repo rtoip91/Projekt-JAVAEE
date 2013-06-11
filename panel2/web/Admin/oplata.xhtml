@@ -29,13 +29,11 @@
                 <h:form>
                 <table>
                     <tr>
-                        <td>
-                                <h:selectOneMenu value="#{mieszkanieBean.id_mieszkanie}">
-                                    <c:forEach items="${oplataBeans.lista}" var="item">
-                                        <f:selectItem itemValue="#{item.nazwa}"/>
-                                    </c:forEach>
-                                </h:selectOneMenu>
-                        </td>
+                        <td>Mieszkaniec</td><td><h:selectOneMenu value="#{oplataBean.id_mieszkaniec}">
+                                <c:forEach items="${oplataBean.lista}" var="item">
+                                    <f:selectItem itemLabel="#{item.login}" />
+                                </c:forEach>
+                            </h:selectOneMenu></td>
                     </tr>
                      <tr>
                          <td>Kwota</td><td><h:inputText id="kwota" value="#{oplataBean.oplata.kwota}" required="true"/></td>
