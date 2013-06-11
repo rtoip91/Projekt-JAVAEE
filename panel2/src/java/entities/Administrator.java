@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Piotrek
+ * @author Tomek
  */
 @Entity
 @Table(name = "Administrator")
@@ -68,10 +68,12 @@ public class Administrator implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "Nazwa")
     private String nazwa;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "UprawnienieID")
-    private Integer uprawnienieID;
+    private int uprawnienieID;
     @JoinColumn(name = "BudynekID", referencedColumnName = "ID")
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Budynek budynekID;
 
     public Administrator() {
@@ -81,13 +83,14 @@ public class Administrator implements Serializable {
         this.id = id;
     }
 
-    public Administrator(Integer id, String imie, String nazwisko, String login, String haslo, String nazwa) {
+    public Administrator(Integer id, String imie, String nazwisko, String login, String haslo, String nazwa, int uprawnienieID) {
         this.id = id;
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.login = login;
         this.haslo = haslo;
         this.nazwa = nazwa;
+        this.uprawnienieID = uprawnienieID;
     }
 
     public Integer getId() {
@@ -138,11 +141,11 @@ public class Administrator implements Serializable {
         this.nazwa = nazwa;
     }
 
-    public Integer getUprawnienieID() {
+    public int getUprawnienieID() {
         return uprawnienieID;
     }
 
-    public void setUprawnienieID(Integer uprawnienieID) {
+    public void setUprawnienieID(int uprawnienieID) {
         this.uprawnienieID = uprawnienieID;
     }
 

@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Piotrek
+ * @author Tomek
  */
 @Entity
 @Table(name = "Uprawnienie")
