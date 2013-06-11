@@ -5,7 +5,7 @@ package Beans;
  * and open the template in the editor.
  */
 
-import com.sun.xml.rpc.processor.modeler.j2ee.xml.string;
+//import com.sun.xml.rpc.processor.modeler.j2ee.xml.string;
 import entities.Oplata;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -51,9 +51,9 @@ public class OplataBean{
     public List<Oplata> getLista(){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("panel2PU2");     
         EntityManager em = emf.createEntityManager();
-        List list = em.createNamedQuery("Oplata.findAll").getResultList();
+        List lista = em.createNamedQuery("Oplata.findAll").getResultList();
         em.close();
-        return list;
+        return lista;
     }
     
     private java.sql.Date toSqlDate(String strDate)  {
