@@ -11,7 +11,15 @@
   </persistence-unit>
   <persistence-unit name="PanelPU" transaction-type="JTA">
     <jta-data-source>panel</jta-data-source>
-    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <class>entities.Administrator</class>
+    <class>entities.Budynek</class>
+    <class>entities.Mieszkanie</class>
+    <class>entities.Mieszkaniec</class>
+    <class>entities.Ogloszenie</class>
+    <class>entities.Oplata</class>
+    <class>entities.Sprawa</class>
+    <class>entities.Uprawnienie</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties/>
   </persistence-unit>
 </persistence>
