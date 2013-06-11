@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./user.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html">
+
+    <ui:define name="top">
+        Opłaty
+    </ui:define>
+
+    <ui:define name="content">
+        <h:body>
+                <h:form>
+                <table>
+                    <tr>
+                        <td>Login</td><td><h:inputText id="login" value="#{mieszkaniecBean.mieszkaniec.login}" required="true"/></td>
+                    </tr>
+                    <tr>
+                        <td>Imię</td><td><h:inputText id="imie" value="#{mieszkaniecBean.mieszkaniec.imie}" required="true"/></td>
+                    </tr>
+                    <tr>
+                        <td>Nazwisko</td><td><h:inputText id="nazwisko" value="#{mieszkaniecBean.mieszkaniec.nazwisko}" required="true"/></td>
+                    </tr>
+                    <tr>
+                        <td>Telefon</td><td><h:inputText id="telefon" value="#{mieszkaniecBean.mieszkaniec.nrtelefonu}" required="true"/></td>
+                    </tr>
+                    <tr>
+                        <td>E_mail</td><td><h:inputText id="e_mail" value="#{mieszkaniecBean.mieszkaniec.email}" required="true"/></td>
+                    </tr>
+                   
+                </table> 
+                
+                
+                     <h:commandButton id="dodaj" action="#{mieszkaniecBean.dodaj}" value="Dodaj"></h:commandButton>
+                </h:form>
+        </h:body>
+        
+    </ui:define>
+
+</ui:composition>
