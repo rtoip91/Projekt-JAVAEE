@@ -36,14 +36,14 @@
                         <tr>   
                             <td>Budynek</td><td><h:selectOneMenu value="#{mieszkanieBean.id_budynek}">
                                     <c:forEach items="${budynekBeans.lista}" var="item">
-                                        <f:selectItem  itemValue="#{item}" />
+                                        <f:selectItem itemLabel="#{item.nazwa}" />
                                     </c:forEach>
                                 </h:selectOneMenu></td>
                         </tr>
                         <tr>   
                             <td>Mieszkaniec</td><td><h:selectOneMenu value="#{mieszkanieBean.id_user}">
                                     <c:forEach items="${mieszkaniecBean.lista}" var="item">
-                                        <f:selectItem  itemValue="#{item}" />
+                                        <f:selectItem  itemLabel="#{item.login}" />
                                     </c:forEach>
                                 </h:selectOneMenu></td>
                         </tr>

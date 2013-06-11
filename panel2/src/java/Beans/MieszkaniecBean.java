@@ -76,10 +76,17 @@ public class MieszkaniecBean {
         EntityManager em = emf.createEntityManager();
        
            em.getTransaction().begin();
+           try
+           {
         mieszkaniec.setId(null);
          em.persist(mieszkaniec);
          em.getTransaction().commit();
           em.close(); 
+           }
+           catch (Exception e)
+             {
+                   em.close();   
+             }
          return null;
       
         
