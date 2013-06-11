@@ -41,10 +41,17 @@ public class OplataBean{
        EntityManager em = emf.createEntityManager();
        
        em.getTransaction().begin();
+       try
+       {
        oplata.setId(null);
        em.persist(oplata);
        em.getTransaction().commit();
        em.close(); 
+       }
+       catch (Exception e)
+             {
+                   em.close();   
+             }
        return null;       
     }       
 }

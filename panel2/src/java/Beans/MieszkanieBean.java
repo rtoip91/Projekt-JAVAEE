@@ -5,6 +5,7 @@
 package Beans;
 import entities.Mieszkanie;
 import entities.Budynek;
+import entities.Mieszkaniec;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -18,24 +19,34 @@ import javax.persistence.Persistence;
 public class MieszkanieBean {
 
     private Mieszkanie mieszkanie; 
-    private int id_budynek;
-    private int id_user;
+    private Budynek id_budynek;
+    private Mieszkaniec id_user;
 
-    public int getId_budynek() {
+    public Mieszkanie getMieszkanie() {
+        return mieszkanie;
+    }
+
+    public void setMieszkanie(Mieszkanie mieszkanie) {
+        this.mieszkanie = mieszkanie;
+    }
+
+    public Budynek getId_budynek() {
         return id_budynek;
     }
 
-    public void setId_budynek(int id_budynek) {
+    public void setId_budynek(Budynek id_budynek) {
         this.id_budynek = id_budynek;
     }
 
-    public int getId_user() {
+    public Mieszkaniec getId_user() {
         return id_user;
     }
 
-    public void setId_user(int id_user) {
+    public void setId_user(Mieszkaniec id_user) {
         this.id_user = id_user;
     }
+
+    
     
     
     public MieszkanieBean() {
@@ -57,10 +68,18 @@ public class MieszkanieBean {
         EntityManager em = emf.createEntityManager();
         
          em.getTransaction().begin();
+         mieszkanie.setMieszkaniecID(id_user);
+         mieszkanie.setBudynekID(id_budynek);
          mieszkanie.setId(null);
+         try{
          em.persist(mieszkanie);
          em.getTransaction().commit();
          em.close(); 
+         }
+         catch (Exception e)
+             {
+                   em.close();   
+             }
          return null;
     }
 }

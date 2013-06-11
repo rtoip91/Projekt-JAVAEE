@@ -36,37 +36,35 @@
                         <tr>   
                             <td>Budynek</td><td><h:selectOneMenu value="#{mieszkanieBean.id_budynek}">
                                     <c:forEach items="${budynekBeans.lista}" var="item">
-                                        <f:selectItem itemValue="#{item.nazwa}"/>
+                                        <f:selectItem  itemValue="#{item}" />
                                     </c:forEach>
                                 </h:selectOneMenu></td>
                         </tr>
                         <tr>   
                             <td>Mieszkaniec</td><td><h:selectOneMenu value="#{mieszkanieBean.id_user}">
                                     <c:forEach items="${mieszkaniecBean.lista}" var="item">
-                                        <f:selectItem itemValue="#{item.login}"/>
+                                        <f:selectItem  itemValue="#{item}" />
                                     </c:forEach>
                                 </h:selectOneMenu></td>
                         </tr>
                         <tr>
-                            <td>Ulica</td><td><h:inputText id="ulica" value="#{budynekBeans.budynek.ulica}"/></td>
+                            <td>Numer</td><td><h:inputText id="numer" value="#{mieszkanieBean.mieszkanie.nrPosesji}"/></td>
                         </tr>
                         <tr>
-                            <td>Numer posesji</td><td><h:inputText id="numer" value="#{budynekBeans.budynek.nrDzialki}"/></td>
+                            <td>Metrarz</td><td><h:inputText id="metrarz" value="#{mieszkanieBean.mieszkanie.metrarz}"/></td>
                         </tr>
                         <tr>
-                            <td>Kod</td><td><h:inputText id="kod" value="#{budynekBeans.budynek.kodPocztowy}"/></td>
+                            <td>Obciążenie</td><td><h:inputText id="obciazenie" value="#{mieszkanieBean.mieszkanie.obciazenie}"/></td>
                         </tr>
                         <tr>
-                            <td>Ilosc mieszkań</td><td><h:inputText id="ilosc_mieszkan" value="#{budynekBeans.budynek.iloscMieszkan}"/></td>
+                            <td>Ryczałt Ogrzewania</td><td><h:inputText id="ryczalt" value="#{mieszkanieBean.mieszkanie.ryczaltogrzewania}"/></td>
                         </tr>
                         <tr>
-                            <td>powierzchnia</td><td><h:inputText id="powierzchnia" value="#{budynekBeans.budynek.powierzchnia}"/></td>
+                            <td>Zużycie Ciepła</td><td><h:inputText id="cieplo" value="#{mieszkanieBean.mieszkanie.zuzycieciepla}"/></td>
                         </tr>
-                         <tr>
-                             <td>Obciążenie</td><td><h:inputText id="obciazenie" value="#{budynekBeans.budynek.obciazenieBudynku}"/></td>
-                        </tr>
+                         
                         <tr>
-                            <td></td><td><h:commandButton id="button" action="#{budynekBeans.dodaj}" value="Dodaj"/></td>
+                            <td></td><td><h:commandButton id="button" action="#{mieszkanieBean.dodaj}" value="Dodaj"/></td>
                         </tr>
                     </table>
                 </h:form>

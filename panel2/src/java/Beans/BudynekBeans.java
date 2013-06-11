@@ -47,11 +47,19 @@ public class BudynekBeans {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("PanelPU");
         EntityManager em = emf.createEntityManager();
         
+        
          em.getTransaction().begin();
+         try
+         {
          budynek.setId(null);
          em.persist(budynek);
          em.getTransaction().commit();
           em.close(); 
+         }
+         catch (Exception e)
+             {
+                   em.close();   
+             }
          return null;
     }
 }
