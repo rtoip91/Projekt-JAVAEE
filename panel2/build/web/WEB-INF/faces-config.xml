@@ -45,4 +45,9 @@
         <managed-bean-class>Beans.OplataBean</managed-bean-class>
     
         <managed-bean-scope>request</managed-bean-scope></managed-bean>
+    <managed-bean>
+        <managed-bean-name>mieszkanieBean</managed-bean-name>
+        <managed-bean-class>Beans.MieszkanieBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>

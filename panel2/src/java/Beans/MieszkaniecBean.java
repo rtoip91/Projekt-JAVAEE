@@ -3,7 +3,9 @@
  * and open the template in the editor.
  */
 package Beans;
+import entities.Budynek;
 import entities.Mieszkaniec;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -32,7 +34,15 @@ public class MieszkaniecBean {
     }
 
     
-    
+    public List<Mieszkaniec> getLista()
+    {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PanelPU");
+        EntityManager em = emf.createEntityManager();
+        List lista = em.createNamedQuery("Mieszkaniec.findAll").getResultList();
+        em.close();
+        return lista;
+        
+    }
     public String pobierz()
     {
        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PanelPU");
