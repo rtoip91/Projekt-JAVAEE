@@ -34,16 +34,40 @@ public class MieszkanieBean {
         return id_budynek;
     }
 
-    public void setId_budynek(Budynek id_budynek) {
-        this.id_budynek = id_budynek;
+    public void setId_budynek(String id) {
+        EntityManagerFactory emf ;
+        EntityManager em = null ;
+        try
+        {
+         emf = Persistence.createEntityManagerFactory("panel2PU2");
+         em = emf.createEntityManager();
+        this.id_budynek=(Budynek)em.createNamedQuery("Budynek.findById").setParameter("id",id ).getSingleResult();
+        em.close();
+        }
+        catch(Exception e)
+        {
+            em.close();
+        }
     }
 
     public Mieszkaniec getId_user() {
         return id_user;
     }
 
-    public void setId_user(Mieszkaniec id_user) {
-        this.id_user = id_user;
+    public void setId_user(String login) {
+        EntityManagerFactory emf ;
+        EntityManager em = null ;
+        try
+        {
+          emf = Persistence.createEntityManagerFactory("panel2PU2");
+         em = emf.createEntityManager();
+        this.id_user =(Mieszkaniec)em.createNamedQuery("Mieszkaniec.findByLogin").setParameter("login", login).getSingleResult();
+        em.close();
+        }
+        catch (Exception e)
+                {
+                    em.close();
+                }
     }
 
     
@@ -55,7 +79,7 @@ public class MieszkanieBean {
     
     public List<Mieszkanie> getLista()
     {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("panel2PU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("panel2PU2");
         EntityManager em = emf.createEntityManager();
         List lista = em.createNamedQuery("Mieszkanie.findAll").getResultList();
         em.close();
@@ -64,7 +88,7 @@ public class MieszkanieBean {
     }
     public String dodaj ()
     {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("panel2PU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("panel2PU2");
         EntityManager em = emf.createEntityManager();
         
          em.getTransaction().begin();

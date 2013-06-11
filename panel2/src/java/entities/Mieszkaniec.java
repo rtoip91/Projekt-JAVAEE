@@ -219,7 +219,7 @@ public class Mieszkaniec implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Mieszkaniec[ id=" + id + " ]";
+        return (imie+" "+nazwisko+" "+login);
     }
     
 }

@@ -230,7 +230,7 @@ public class Budynek implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Budynek[ id=" + id + " ]";
+        return (miasto+" "+ulica+" "+nrDzialki);
     }
     
 }
