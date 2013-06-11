@@ -72,7 +72,7 @@ public class MieszkaniecBean {
        
         mieszkaniec.setUprawnienieID(1);
         
-        mieszkaniec.setNazwa("looooll");
+        mieszkaniec.setNazwa(mieszkaniec.toString());
         EntityManager em = emf.createEntityManager();
        
            em.getTransaction().begin();
