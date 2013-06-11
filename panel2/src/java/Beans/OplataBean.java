@@ -5,7 +5,7 @@ package Beans;
  * and open the template in the editor.
  */
 
-import entities.Mieszkaniec;
+import entities.Mieszkanie;
 import entities.Oplata;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -23,31 +23,24 @@ public class OplataBean{
 
     private Oplata oplata;
     public String data;
-    private Mieszkaniec id_mieszkaniec;
+    private int id_mieszkanie;
 
     /**
      * Creates a new instance of OplataBean
      */
-    public List<Mieszkaniec> getLista(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PanelPU");     
-        EntityManager em = emf.createEntityManager();
-        List lista = em.createNamedQuery("Mieszkaniec.findAll").getResultList();
-        em.close();
-        return lista;
-    }
     
     public OplataBean() {
         oplata = new Oplata();
     }   
 
-    public Mieszkaniec getId_mieszkaniec() {
-        return id_mieszkaniec;
+    public int getId_mieszkanie() {
+        return id_mieszkanie;
     }
 
-    public void setId_mieszkaniec(Mieszkaniec id_mieszkaniec) {
-        this.id_mieszkaniec = id_mieszkaniec;
+    public void setId_mieszkanie(int id_mieszkanie) {
+        this.id_mieszkanie = id_mieszkanie;
     }
- 
+  
     public String getData() {
         return data;
     }
@@ -64,11 +57,19 @@ public class OplataBean{
         this.oplata = oplata;
     }
     
+        private Mieszkanie findMiesz()
+{
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("panel2PU2");
+        EntityManager em = emf.createEntityManager();
+        Mieszkanie b =(Mieszkanie) em.createNamedQuery("Mieszkanie.findById").setParameter("id", id_mieszkanie).getSingleResult();
+        em.close();
+        return b;
+}
+    
     private java.sql.Date toSqlDate(String strDate)  {
         DateFormat dateFrm = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date myDate = new java.util.Date();
         java.sql.Date sqlDate;
-
         try
         {
           myDate = dateFrm.parse(strDate);
@@ -84,16 +85,15 @@ public class OplataBean{
     
     public String dodaj()
     {
-       EntityManagerFactory emf = Persistence.createEntityManagerFactory("panel2PU2");
-              
-       oplata.setData(toSqlDate(data));
-       
+       EntityManagerFactory emf = Persistence.createEntityManagerFactory("panel2PU2");               
        EntityManager em = emf.createEntityManager();
-       
-       em.getTransaction().begin();
+       Mieszkanie a=findMiesz();     
        try
        {
+       em.getTransaction().begin();
        oplata.setId(null);
+       oplata.setData(toSqlDate(data));
+       oplata.setMieszkanieID(a);
        em.persist(oplata);
        em.getTransaction().commit();
        em.close(); 
