@@ -3,12 +3,55 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
-        <title>Facelet Title</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href=".././resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href=".././resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <title>Facelets Template</title>
     </h:head>
     <h:body>
-        <h:form>
-        <h:commandButton id="dodaj" action="#{mieszkaniecBean.dodaj()}" value="Dodaj"></h:commandButton>
-        </h:form>
+        <div id="top" class="top">
+           Dodawanie Opłaty
+        </div>
+        <div>
+            <div id="left">
+               <ul>
+                    <li><h:outputLink value="../index.xhtml">Strona główna</h:outputLink></li>
+                    <li><h:outputLink value="admin.xhtml">Nowy mieszkaniec</h:outputLink></li>
+                    <li><h:outputLink value="budynek.xhtml">Nowy budynek</h:outputLink></li>
+                    <li><h:outputLink value="mieszkanie.xhtml">Nowe mieszkanie</h:outputLink></li>
+                     <li><h:outputLink value="oplata.xhtml">Nowa oplata</h:outputLink></li>
+                </ul>
+            </div>
+            <div id="content" class="left_content">
+                <h3 style="alignment-adjust: central">Nowa opłata</h3>
+                <h:form>
+                <table>
+                    <tr>
+                        <td>Mieszkanie</td><td><h:inputText id="mieszkanieID" value="#{oplataBean.oplata.mieszkanieID}" required="true"/></td>
+                    </tr>
+                     <tr>
+                         <td>Kwota</td><td><h:inputSecret id="kwota" value="#{oplataBean.oplata.kwota}" required="true"/></td>
+                    </tr>
+                    <tr>
+                        <td>Typ</td><td><h:inputText id="typ" value="#{oplataBean.oplata.typ}" required="true"/></td>
+                    </tr>
+                    <tr>
+                        <td>Status opłaty</td><td><h:inputText id="status" value="#{oplataBean.oplata.status}" required="true"/></td>
+                    </tr>
+                    <tr>
+                        <td>Opis opłata</td><td><h:inputText id="opis" value="#{oplataBean.oplata.opis}" required="true"/></td>
+                    </tr>
+                    <tr>
+                        <td>Data</td><td><h:inputText id="data" value="#{oplataBean.oplata.data}" required="true"/></td>
+                    </tr>
+                   
+                        </table> 
+                
+                
+                     <h:commandButton id="dodaj" action="#{oplataBean.dodaj}" value="Dodaj"></h:commandButton>
+                </h:form>
+            </div>
+        </div>
     </h:body>
 </html>
 
