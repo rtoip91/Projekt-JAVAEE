@@ -63,10 +63,11 @@ public class SprawaBean {
         EntityManager em = emf.createEntityManager();
         Mieszkaniec a=findMiesz();
         try{
-         em.getTransaction().begin();
+         
          sprawa.setMieszkaniecID(a);
          sprawa.setId(null);
-         
+         sprawa.setStatus("Do rozpatrzenia");
+         em.getTransaction().begin();
          em.persist(sprawa);
          em.getTransaction().commit();
          em.close(); 

@@ -71,8 +71,8 @@ public class LoginBean {
         q.setParameter("login", login);
         q.setParameter("password", haslo);
          Query w = em.createQuery("SELECT u FROM Administrator u WHERE u.login = :login AND u.haslo= :password");
-         q.setParameter("login", login);
-        q.setParameter("password", haslo);
+         w.setParameter("login", login);
+        w.setParameter("password", haslo);
         try{
             mieszkaniec = (Mieszkaniec) q.getSingleResult();
             rezultat="Mieszkaniec";

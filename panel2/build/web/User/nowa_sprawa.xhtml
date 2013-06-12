@@ -16,17 +16,15 @@
                 <table>
                         <tr>   
                             <td>Mieszkaniec</td><td><h:selectOneMenu value="#{sprawaBean.login}">
-                                    <c:forEach items="${mieszkaniecBean.lista}" var="item">
-                                        <f:selectItem  itemLabel="#{item}" itemValue="#{item.login}" />
-                                    </c:forEach>
+                                   
+                                    <f:selectItem itemValue="#{loginBean.login}" />
+                                   
                                 </h:selectOneMenu></td>
                         </tr>
                         <tr>
                             <td>Treść sprawy</td><td><h:inputTextarea id="tresc" value="#{sprawaBean.sprawa.tresc}"/></td>
                         </tr>
-                        <tr>
-                            <td>Status</td><td><h:inputText id="status" value="#{sprawaBean.sprawa.status}"/></td>
-                        </tr>
+                        
                         </table> 
                      <h:commandButton id="dodaj" action="#{sprawaBean.dodaj}" value="Dodaj"></h:commandButton>
                 </h:form>
