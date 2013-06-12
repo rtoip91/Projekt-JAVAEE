@@ -55,4 +55,29 @@
         <managed-bean-class>Beans.LoginBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>ogloszenieBean</managed-bean-name>
+        <managed-bean-class>Beans.OgloszenieBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>ogloszenieBean1</managed-bean-name>
+        <managed-bean-class>Beans.OgloszenieBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>sprawa</managed-bean-name>
+        <managed-bean-class>Beans.Sprawa</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>sprawaBean</managed-bean-name>
+        <managed-bean-class>Beans.SprawaBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>nowaSprawaBean</managed-bean-name>
+        <managed-bean-class>Beans.NowaSprawaBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>

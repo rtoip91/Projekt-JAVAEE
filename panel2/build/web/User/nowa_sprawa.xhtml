@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./user.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <ui:define name="top">
+        Nowa sprawa
+    </ui:define>
+
+    <ui:define name="content">
+        <h:body>
+                <h:form>
+                <table>
+                    <tr>
+                        <td>Login</td><td><h:inputText id="login" value="#{mieszkaniecBean.mieszkaniec.login}" required="true"/></td>
+                    </tr>
+                        </table> 
+                     <h:commandButton id="dodaj" action="#{mieszkaniecBean.dodaj}" value="Dodaj"></h:commandButton>
+                </h:form>
+
+    </h:body>
+    </ui:define>
+
+</ui:composition>
