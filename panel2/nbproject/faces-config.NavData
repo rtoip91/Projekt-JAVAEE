@@ -2,10 +2,20 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
-        <Node id="mieszkaniec.xhtml" x="150" y="150" zoom="false"/>
-        <Node id="index.xhtml" x="301" y="285" zoom="false"/>
-        <Node id="admin.xhtml" x="533" y="197" zoom="true"/>
+        <Node id="User/sprawy.xhtml" x="650" y="300" zoom="true"/>
+        <Node id="User/newsletter.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="newTemplatetemplate.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="User/user.xhtml" x="650" y="450" zoom="true"/>
+        <Node id="Admin/budynek.xhtml" x="150" y="450" zoom="true"/>
         <Node id="main.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="Admin/mieszkaniec.xhtml" x="400" y="300" zoom="true"/>
+        <Node id="User/oplaty.xhtml" x="900" y="300" zoom="true"/>
+        <Node id="User/zmiana_danych.xhtml" x="400" y="450" zoom="true"/>
+        <Node id="index.xhtml" x="230" y="198" zoom="false"/>
+        <Node id="User/ogloszenia.xhtml" x="150" y="600" zoom="true"/>
+        <Node id="Admin/admin.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="Admin/oplata.xhtml" x="400" y="600" zoom="true"/>
+        <Node id="Admin/mieszkanie.xhtml" x="1150" y="150" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>
