@@ -20,8 +20,23 @@
     </ui:define>
 
     <ui:define name="content">
-        Witaj na naszej stronie !
-        <h:commandButton id="dodaj" action="#{mieszkaniecBean.dodaj}" value="Dodaj"></h:commandButton>
+        <h:form>
+        <table>
+            <tr>
+                <td>Login</td>
+                <td><h:inputText id="login" value="#{loginBean.login}" required="true"/></td>
+            </tr>
+            <tr>
+               
+                <td>Hasło</td>
+                <td> <h:inputSecret id="haslo" value="#{loginBean.haslo}" required="true"/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><h:commandButton id="loguj" value="Zaloguj" action="#{loginBean.logowanie}"/></td>
+            </tr>
+        </table>
+        </h:form>
     </ui:define>
 
 </ui:composition>
