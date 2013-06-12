@@ -201,7 +201,7 @@ public class Mieszkanie implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Mieszkanie[ id=" + id + " ]";
+        return (id+" "+nazwa+" "+nrPosesji);
     }
     
 }

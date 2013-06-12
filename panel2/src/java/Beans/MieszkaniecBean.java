@@ -43,26 +43,6 @@ public class MieszkaniecBean {
         return lista;
         
     }
-    public String pobierz()
-    {
-       EntityManagerFactory emf = Persistence.createEntityManagerFactory("panel2PU2");
-       
-       
-        mieszkaniec.setUprawnienieID(1);
-        
-        mieszkaniec.setNazwa("looooll");
-        EntityManager em = emf.createEntityManager();
-       
-           em.getTransaction().begin();
-        mieszkaniec.setId(null);
-         em.persist(mieszkaniec);
-         em.getTransaction().commit();
-          em.close(); 
-         return null;
-      
-        
-    }
-    
      
      
     public String dodaj()

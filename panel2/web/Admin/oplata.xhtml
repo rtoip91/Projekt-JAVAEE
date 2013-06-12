@@ -28,10 +28,10 @@
                 <h3 style="alignment-adjust: central">Nowa opłata</h3>
                 <h:form>
                 <table>
-                    <tr>
-                        <td>Mieszkaniec</td><td><h:selectOneMenu value="#{oplataBean.id_mieszkaniec}">
-                                <c:forEach items="${oplataBean.lista}" var="item">
-                                    <f:selectItem itemLabel="#{item.login}" />
+                    <tr>   
+                        <td>Mieszkanie</td><td><h:selectOneMenu value="#{oplataBean.id_mieszkanie}">
+                                <c:forEach items="${mieszkanieBean.lista}" var="item">
+                                    <f:selectItem itemLabel="#{item}" itemValue="#{item.id}" />
                                 </c:forEach>
                             </h:selectOneMenu></td>
                     </tr>
