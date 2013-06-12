@@ -6,6 +6,7 @@ package Beans;
  */
 
 import entities.Mieszkanie;
+import entities.Mieszkaniec;
 import entities.Oplata;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -57,6 +58,15 @@ public class OplataBean{
         this.oplata = oplata;
     }
     
+        public List<Oplata> getLista()
+    {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("panel2PU2");
+        EntityManager em = emf.createEntityManager();
+        List lista = em.createNamedQuery("Oplata.findAll").getResultList();
+        em.close();
+        return lista;
+        
+    }
         private Mieszkanie findMiesz()
 {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("panel2PU2");
